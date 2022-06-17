@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MVP RecycleView</string>
+    <string name="create">CREATE</string>
+    <string name="model_view_presenter">MODEL - VIEW - PRESENTER</string>
+    <string name="phong_kaster">Phong Kaster</string>
+    <string name="remove">Remove</string>
+    <string name="edit">Modify</string>
+</resources>
