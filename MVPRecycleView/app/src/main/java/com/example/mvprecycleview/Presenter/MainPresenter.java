@@ -1,6 +1,6 @@
 package com.example.mvprecycleview.Presenter;
 
-import com.example.mvprecycleview.Interface.MainInterfacePresenter;
+import com.example.mvprecycleview.Interface.MainView;
 import com.example.mvprecycleview.Model.Person;
 
 import java.util.ArrayList;
@@ -11,11 +11,11 @@ public class MainPresenter {
 
     /**
      * @Author Phong-Kaster
-     * this interface "PresenterView" & its contructor is the way presenter gets in touch with MainActivity
+     * this interface "PresenterView" & its constructor is the way presenter gets in touch with MainActivity
      * */
-    private MainInterfacePresenter.PresenterView presenterView;
+    private final MainView presenterView;
 
-    public MainPresenter(MainInterfacePresenter.PresenterView presenterView)
+    public MainPresenter(MainView presenterView)
     {
         this.presenterView = presenterView;
     }
@@ -68,7 +68,7 @@ public class MainPresenter {
      */
     public void modify(int position, String name, String phone)
     {
-        if( position < 0 || name.length() < 0 || phone.length() < 5)
+        if( position < 0 || name.length() < 1 || phone.length() < 5)
             presenterView.modifyFailed();
 
 
@@ -89,6 +89,6 @@ public class MainPresenter {
             presenterView.eradicateFailed();
 
         people.remove(position);
-        presenterView.modifyFailed();
+        presenterView.eradicateSuccessfully();
     }
 }

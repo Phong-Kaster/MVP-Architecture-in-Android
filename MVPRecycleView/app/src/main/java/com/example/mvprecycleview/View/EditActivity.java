@@ -8,13 +8,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.mvprecycleview.Interface.MainInterfacePresenter;
+
+import com.example.mvprecycleview.Interface.EditView;
 import com.example.mvprecycleview.MainActivity;
-import com.example.mvprecycleview.Model.Person;
-import com.example.mvprecycleview.Presenter.MainPresenter;
+import com.example.mvprecycleview.Presenter.EditPresenter;
 import com.example.mvprecycleview.R;
 
-public class EditActivity extends AppCompatActivity {
+/**
+ * adapter.notify must be declared in interface View not in activity
+ */
+public class EditActivity extends AppCompatActivity implements EditView {
 
     private Button buttonEdit;
     private Button buttonRemove;
@@ -25,6 +28,8 @@ public class EditActivity extends AppCompatActivity {
     private String position;
     private String name;
     private String phone;
+
+    private EditPresenter presenter ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,7 @@ public class EditActivity extends AppCompatActivity {
         name = intent.getStringExtra("name");
         phone = intent.getStringExtra("phone");
 
+        presenter = new EditPresenter(this);
 
         /*Step 2 - run essential functions*/
         setupComponent();
@@ -71,13 +77,12 @@ public class EditActivity extends AppCompatActivity {
             phone = txtPhone.getText().toString().trim();
 
             /*Step 2 - modify the target with MainActivity's modify functions*/
-            MainActivity.getmInstanceActivity().modify(
-                    Integer.parseInt(position), name, phone);
+            presenter.modify(position, name, phone);
         });
 
 
         buttonRemove.setOnClickListener(view ->{
-            MainActivity.getmInstanceActivity().eradicate(Integer.parseInt(position));
+            presenter.eradicate(position);
         });
 
     }
@@ -94,5 +99,13 @@ public class EditActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void modifyFailed() {
+        Toast.makeText(this, "Name or phone is not valid! Please, try again ", Toast.LENGTH_SHORT).show();
+    }
 
+    @Override
+    public void eradicateFailed() {
+        Toast.makeText(this, "Removal failed! Please, try again", Toast.LENGTH_SHORT).show();
+    }
 }

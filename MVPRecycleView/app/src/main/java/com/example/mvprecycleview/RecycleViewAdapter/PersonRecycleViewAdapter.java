@@ -12,7 +12,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mvprecycleview.Interface.MainInterfacePresenter;
 import com.example.mvprecycleview.Model.Person;
 import com.example.mvprecycleview.R;
 import com.example.mvprecycleview.View.EditActivity;
@@ -21,7 +20,7 @@ import java.util.ArrayList;
 
 public class PersonRecycleViewAdapter extends RecyclerView.Adapter<PersonRecycleViewAdapter.ViewHolder> {
 
-    private Context context;
+    private final Context context;
     private ArrayList<Person> objects = new ArrayList<>();
 
     public PersonRecycleViewAdapter(Context context, ArrayList<Person> objects)

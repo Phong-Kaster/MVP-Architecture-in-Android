@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.mvprecycleview.Interface.MainInterfacePresenter;
+import com.example.mvprecycleview.Interface.MainView;
 import com.example.mvprecycleview.Model.Person;
 import com.example.mvprecycleview.Presenter.MainPresenter;
 import com.example.mvprecycleview.RecycleViewAdapter.PersonRecycleViewAdapter;
@@ -17,7 +17,7 @@ import com.example.mvprecycleview.RecycleViewAdapter.PersonRecycleViewAdapter;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements MainInterfacePresenter.PresenterView {
+public class MainActivity extends AppCompatActivity implements MainView {
 
     private RecyclerView recyclerView;
     private PersonRecycleViewAdapter adapter;
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements MainInterfacePres
             String phone = "0366253623";
 
             presenter.create(name, phone);
-            adapter.notifyDataSetChanged();
+
         });
     }
 
@@ -112,9 +112,11 @@ public class MainActivity extends AppCompatActivity implements MainInterfacePres
      * They are automatically showed below
      * we just re-define these functions which we need to need.
      */
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void createSuccessfully() {
         Toast.makeText(this, "Create successfully", Toast.LENGTH_SHORT).show();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -122,9 +124,11 @@ public class MainActivity extends AppCompatActivity implements MainInterfacePres
         Toast.makeText(this, "Create failed", Toast.LENGTH_SHORT).show();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void modifySuccessfully() {
         Toast.makeText(this, "Modify successfully", Toast.LENGTH_SHORT).show();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -132,14 +136,17 @@ public class MainActivity extends AppCompatActivity implements MainInterfacePres
         Toast.makeText(this, "Modify Failed", Toast.LENGTH_SHORT).show();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void eradicateSuccessfully() {
         Toast.makeText(this, "Eradicated Successfully !", Toast.LENGTH_SHORT).show();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
     public void eradicateFailed() {
         Toast.makeText(this, "Eradicated Failed !", Toast.LENGTH_SHORT).show();
+        finish();
     }
 
 
@@ -152,7 +159,6 @@ public class MainActivity extends AppCompatActivity implements MainInterfacePres
     public void modify(int position, String name, String phone)
     {
         presenter.modify(position, name, phone);
-        adapter.notifyItemChanged(position);
     }
 
 
@@ -163,6 +169,5 @@ public class MainActivity extends AppCompatActivity implements MainInterfacePres
     public void eradicate(int position)
     {
         presenter.eradicate(position);
-        adapter.notifyItemRemoved(position);
     }
 }
