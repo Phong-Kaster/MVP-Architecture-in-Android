@@ -19,6 +19,7 @@
   - [**Step 4: Working with Interface**](#step-4-working-with-interface)
   - [**Step 5: Defining Presenter**](#step-5-defining-presenter)
 - [**Demo**](#demo)
+- [**Advantages & Disadvantage**](#advantages--disadvantage)
 - [**My Mentors**](#my-mentors)
 - [**Made with 💘 and Android <img src="https://www.vectorlogo.zone/logos/android/android-tile.svg" width="40px">**](#made-with--and-android-)
 
@@ -243,6 +244,11 @@ https://user-images.githubusercontent.com/58034430/174261212-cdab76a8-70ce-4400-
 
 
 
+# [**Advantages & Disadvantage**](#advantages--disadvantage)
+
+| Advantages                                                                                                                                               | Disadvantages                                                                                                                                                |
+|----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| No conceptual relationship in android components. Easy code maintenance and testing as the application’s model, view, and presenter layer are separated. | If the developer does not follow the single responsibility principle to break the code then the Presenter layer tends to expand to a huge all-knowing class. |
 
 # [**My Mentors**](#my-mentors)
 
