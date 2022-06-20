@@ -246,9 +246,10 @@ https://user-images.githubusercontent.com/58034430/174261212-cdab76a8-70ce-4400-
 
 # [**Advantages & Disadvantage**](#advantages--disadvantage)
 
-| Advantages                                                                                                                                               | Disadvantages                                                                                                                                                |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| No conceptual relationship in android components. Easy code maintenance and testing as the application’s model, view, and presenter layer are separated. | If the developer does not follow the single responsibility principle to break the code then the Presenter layer tends to expand to a huge all-knowing class. |
+| Advantages                                                                                             | Disadvantages                                                                                                                                                |
+|--------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| No conceptual relationship in android components                                                       | If the developer does not follow the single responsibility principle to break the code then the Presenter layer tends to expand to a huge all-knowing class. |
+| Easy code maintenance and testing as the application’s model, view, and presenter layer are separated. |                                                                                                                                                              |
 
 # [**My Mentors**](#my-mentors)
 
